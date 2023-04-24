@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ProyectoPeliculas</string>
+    <string name="IS">Inicio de Sesión</string>
+    <string name="Usuario">Usuario</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="Entrar">Entrar</string>
+    <string name="NU">Crear nueva cuenta</string>
+    <string name="OC">Olvidé mi contraseña</string>
+    <string name="bienvenido">Bienvenido: </string>
+    <string name="usuarioPP">Usuario</string>
+</resources>
