@@ -12,6 +12,9 @@
         android:theme="@style/Theme.ProyectoPeliculas"
         tools:targetApi="31">
         <activity
+            android:name=".olvideContrasena"
+            android:exported="false" />
+        <activity
             android:name=".crearCuenta"
             android:exported="false" />
         <activity

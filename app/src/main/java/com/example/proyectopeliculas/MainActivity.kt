@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         val iniciarSesionButton: Button = findViewById(R.id.iniciarSesion)
         val crearCuentaTextView = findViewById<TextView>(R.id.crearCuenta)
+        val recuperarContrasena = findViewById<TextView>(R.id.olvideContraseña)
 
         iniciarSesionButton.setOnClickListener {
             val usuario: String = usuarioEditText.text.toString()
@@ -65,6 +66,11 @@ class MainActivity : AppCompatActivity() {
 
         crearCuentaTextView.setOnClickListener {
             val intent = Intent(this@MainActivity, crearCuenta::class.java)
+            startActivity(intent)
+        }
+
+        recuperarContrasena.setOnClickListener {
+            val intent = Intent(this@MainActivity, olvideContrasena::class.java)
             startActivity(intent)
         }
     }
