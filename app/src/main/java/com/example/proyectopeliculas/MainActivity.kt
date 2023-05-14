@@ -5,11 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var usuarioEditText: EditText
     private lateinit var contraseñaEditText: EditText
+    private val db= FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +31,29 @@ class MainActivity : AppCompatActivity() {
             val usuario: String = usuarioEditText.text.toString()
             val contraseña: String = contraseñaEditText.text.toString()
 
-            //Lógica de verificación de usuario y contraseña
+            // Consulta la base de datos para verificar las credenciales del usuario
+            GlobalScope.launch(Dispatchers.Main) {
+                try {
+                    val querySnapshot: QuerySnapshot = db.collection("Usuarios")
+                        .whereEqualTo("usuario", usuario)
+                        .whereEqualTo("contrasena", contraseña)
+                        .get()
+                        .await()
 
-            val intent = Intent(this@MainActivity, PantallaPrincipal::class.java)
-            intent.putExtra("usuario", usuario)
-            startActivity(intent)
+                    if (!querySnapshot.isEmpty) {
+                        // Las credenciales son válidas, el usuario está autenticado
+                        val intent = Intent(this@MainActivity, PantallaPrincipal::class.java)
+                        intent.putExtra("usuario", usuario)
+                        startActivity(intent)
+                    } else {
+                        // Las credenciales son inválidas, muestra un mensaje de error
+                        Toast.makeText(this@MainActivity, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    // Ocurrió un error al acceder a la base de datos
+                    Toast.makeText(this@MainActivity, "Error de base de datos", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }
