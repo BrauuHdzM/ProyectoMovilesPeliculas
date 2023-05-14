@@ -10,7 +10,10 @@ class PantallaPrincipal : AppCompatActivity() {
         setContentView(R.layout.activity_pantalla_principal)
 
         val usuario = intent.getStringExtra("usuario")
+        val idUsuario = intent.getStringExtra("idUsuario")
         val usuarioTextView = findViewById<TextView>(R.id.usuarioPP)
+        val idUsuarioTextView = findViewById<TextView>(R.id.idUsuario)
         usuarioTextView.text = usuario
+        idUsuarioTextView.text = "Con ID: $idUsuario"
     }
 }

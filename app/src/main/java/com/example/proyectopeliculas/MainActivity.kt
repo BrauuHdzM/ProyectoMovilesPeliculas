@@ -45,8 +45,11 @@ class MainActivity : AppCompatActivity() {
 
                     if (!querySnapshot.isEmpty) {
                         // Las credenciales son válidas, el usuario está autenticado
-                        val nombre: String = querySnapshot.documents[0].getString("nombre") ?: ""
+                        val documentSnapshot = querySnapshot.documents[0]
+                        val idUsuario = documentSnapshot.id
+                        val nombre: String = documentSnapshot.getString("nombre") ?: ""
                         val intent = Intent(this@MainActivity, PantallaPrincipal::class.java)
+                        intent.putExtra("idUsuario", idUsuario)
                         intent.putExtra("usuario", nombre)
                         startActivity(intent)
                     } else {
