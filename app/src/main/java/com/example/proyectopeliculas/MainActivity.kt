@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         contraseñaEditText = findViewById(R.id.contraseña)
 
         val iniciarSesionButton: Button = findViewById(R.id.iniciarSesion)
+        val crearCuentaTextView = findViewById<TextView>(R.id.crearCuenta)
+
         iniciarSesionButton.setOnClickListener {
             val usuario: String = usuarioEditText.text.toString()
             val contraseña: String = contraseñaEditText.text.toString()
@@ -42,8 +45,9 @@ class MainActivity : AppCompatActivity() {
 
                     if (!querySnapshot.isEmpty) {
                         // Las credenciales son válidas, el usuario está autenticado
+                        val nombre: String = querySnapshot.documents[0].getString("nombre") ?: ""
                         val intent = Intent(this@MainActivity, PantallaPrincipal::class.java)
-                        intent.putExtra("usuario", usuario)
+                        intent.putExtra("usuario", nombre)
                         startActivity(intent)
                     } else {
                         // Las credenciales son inválidas, muestra un mensaje de error
@@ -54,6 +58,11 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Error de base de datos", Toast.LENGTH_SHORT).show()
                 }
             }
+        } //fin setOnClickListener de iniciarSesion
+
+        crearCuentaTextView.setOnClickListener {
+            val intent = Intent(this@MainActivity, crearCuenta::class.java)
+            startActivity(intent)
         }
     }
 }
