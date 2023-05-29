@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProyectoPeliculas</string>
+    <string name="app_name">RateFlix</string>
     <string name="IS">Inicio de Sesión</string>
     <string name="Usuario">Usuario</string>
     <string name="Contraseña">Contraseña</string>

@@ -21,6 +21,7 @@ class olvideContrasena : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_olvide_contrasena)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         nombreEditText = findViewById(R.id.editTextNombreRecuperacion)
         usuarioEditText = findViewById(R.id.editTextUsuarioRecuperacion)

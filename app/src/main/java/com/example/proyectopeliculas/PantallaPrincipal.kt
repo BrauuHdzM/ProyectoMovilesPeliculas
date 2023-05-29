@@ -8,6 +8,7 @@ class PantallaPrincipal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_principal)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val usuario = intent.getStringExtra("usuario")
         val idUsuario = intent.getStringExtra("idUsuario")

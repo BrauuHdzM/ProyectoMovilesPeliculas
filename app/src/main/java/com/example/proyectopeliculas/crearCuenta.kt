@@ -17,6 +17,7 @@ class crearCuenta : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_cuenta)
 
@@ -24,6 +25,8 @@ class crearCuenta : AppCompatActivity() {
         correoEditText = findViewById(R.id.editTextCorreo)
         usuarioEditText = findViewById(R.id.editTextUsuario)
         contraseñaEditText = findViewById(R.id.editTextaContrasena)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
 
         val crearCuentaButton: Button = findViewById(R.id.buttonCrearCuenta)
         crearCuentaButton.setOnClickListener {
