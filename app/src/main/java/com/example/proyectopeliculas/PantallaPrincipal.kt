@@ -17,6 +17,7 @@ class PantallaPrincipal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_principal)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.hide()
 
         val usuario = intent.getStringExtra("usuario")
         val idUsuario = intent.getStringExtra("idUsuario")
