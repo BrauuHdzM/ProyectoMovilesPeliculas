@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_search"
+        android:title="Inicio"
+        android:icon="@drawable/casa" />
+    <item android:id="@+id/action_navigation"
+    android:title="Buscar"
+    android:icon="@drawable/lupa"/>
+    <item android:id="@+id/action_settings"
+        android:title="Yo"
+        android:icon="@drawable/usuario" />
+
+</menu>
