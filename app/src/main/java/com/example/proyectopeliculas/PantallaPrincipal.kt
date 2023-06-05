@@ -1,10 +1,13 @@
 package com.example.proyectopeliculas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PantallaPrincipal : AppCompatActivity() {
@@ -13,7 +16,7 @@ class PantallaPrincipal : AppCompatActivity() {
     private val peliculasList: MutableList<Pelicula> = mutableListOf() // Lista de películas a mostrar
     private val calificacionesList: MutableList<Calificaciones> = mutableListOf() // Lista de calificaciones por ID de película
     private val peliculasIdsList: MutableList<String> = mutableListOf() // Lista de identificadores de las películas
-
+    private lateinit var bottomNavigationView: BottomNavigationView
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +31,34 @@ class PantallaPrincipal : AppCompatActivity() {
 
         peliculasRecyclerView = findViewById(R.id.peliculasRecyclerView)
         peliculaAdapter = PeliculaAdapter(peliculasList, calificacionesList, peliculasIdsList, idUsuario)
-        peliculasRecyclerView.layoutManager = LinearLayoutManager(this)
+        val layoutManager = GridLayoutManager(this, 2)
+        peliculasRecyclerView.layoutManager = layoutManager
         peliculasRecyclerView.adapter = peliculaAdapter
 
         obtenerPeliculasDesdeFirestore()
         obtenerCalificacionesDesdeFirestore()
+
+
+        bottomNavigationView = findViewById(R.id.navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_perfil -> {
+                    val intent = Intent(this, Perfil::class.java)
+                    startActivity(intent)
+                    true
+
+                }
+                R.id.action_noticias -> {
+
+                    val intent = Intent(this, Noticias::class.java)
+                    startActivity(intent)
+
+                    true
+                }
+
+                else -> {false}
+            }
+        }
     }
 
     private fun obtenerPeliculasDesdeFirestore() {
