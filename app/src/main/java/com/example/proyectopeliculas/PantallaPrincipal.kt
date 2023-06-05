@@ -71,7 +71,6 @@ class PantallaPrincipal : AppCompatActivity() {
                     val ano = document.getLong("ano")?.toInt() ?: 0
                     val actores = document.getString("actores") ?: ""
                     val descripcion = document.getString("descripcion") ?: ""
-
                     val pelicula = Pelicula(nombre, ano, actores, descripcion)
                     peliculasList.add(pelicula)
                     peliculasIdsList.add(idPelicula) // Agregar el identificador a la lista de identificadores

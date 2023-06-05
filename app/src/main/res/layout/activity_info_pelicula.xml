@@ -6,13 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".InfoPelicula">
 
+
+
     <LinearLayout
+        android:id="@+id/informacionex"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="55dp">
+        tools:layout_editor_absoluteY="122dp">
 
         <TextView
             android:id="@+id/nombreTextView"
@@ -26,6 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo_app" />
 
         <TextView
             android:id="@+id/actoresTextView"

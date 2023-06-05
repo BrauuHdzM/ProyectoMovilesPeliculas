@@ -1,5 +1,6 @@
 package com.example.proyectopeliculas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -50,6 +51,10 @@ class InfoPelicula : AppCompatActivity() {
             // Validar que la calificación y el comentario no estén vacíos
             if (calificacion > 0 && comentario.isNotEmpty()) {
                 guardarCalificacion(idPelicula, idUsuario, calificacion, comentario)
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                startActivity(intent)
+
+
             } else {
                 // Mostrar mensaje de error o realizar alguna acción adicional
             }
