@@ -3,6 +3,8 @@ package com.example.proyectopeliculas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Noticias : AppCompatActivity() {
@@ -10,6 +12,10 @@ class Noticias : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_noticias)
 
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val adapter = NoticiaAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter= adapter
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation)
