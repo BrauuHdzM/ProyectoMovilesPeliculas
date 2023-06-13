@@ -1,6 +1,7 @@
 package com.example.proyectopeliculas
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,12 +49,33 @@ class NoticiaAdapter : RecyclerView.Adapter <NoticiaAdapter.ManejadorVista> (){
             val imagen = noticia.getString("imagen")
             val encabezado = noticia.getString("encabezado")
             val resumen = noticia.getString("resumen")
+
             Picasso.get().load(imagen).into(holder.imagenNoticia)
             holder.encabezadoNoticia.text = encabezado
-
             holder.resumenNoticia.text = resumen
+
+            // Agregar el listener de clic al titular de la noticia
+            holder.itemView.setOnClickListener {
+                // Obtener la noticia seleccionada
+                val noticiaSeleccionada = contenidoArchivo.getJSONObject(holder.adapterPosition)
+
+                // Obtener los detalles de la noticia (por ejemplo, el texto completo)
+                val textoCompleto = noticiaSeleccionada.getString("cuerpoNoticia")
+                val encabezadoN = noticiaSeleccionada.getString("encabezado")
+                val video= noticiaSeleccionada.getString("imagen")
+
+
+                // Crear un intent para abrir la actividad de detalles de la noticia
+                val intent = Intent(holder.itemView.context, DetallesNoticiaActivity::class.java)
+                intent.putExtra("encabezado", encabezadoN)
+                intent.putExtra("textoCompleto", textoCompleto)
+                intent.putExtra("imagen", imagen)
+                holder.itemView.context.startActivity(intent)
+            }
         }
     }
+
+
 
     // Función para leer el contenido del archivo JSON y devolverlo como un objeto JSONArray
     private fun leerArchivoJSON(context: Context): JSONArray {
