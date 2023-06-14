@@ -69,7 +69,7 @@ class NoticiaAdapter : RecyclerView.Adapter <NoticiaAdapter.ManejadorVista> (){
                 val intent = Intent(holder.itemView.context, DetallesNoticiaActivity::class.java)
                 intent.putExtra("encabezado", encabezadoN)
                 intent.putExtra("textoCompleto", textoCompleto)
-                intent.putExtra("imagen", imagen)
+                intent.putExtra("imagen", video)
                 holder.itemView.context.startActivity(intent)
             }
         }

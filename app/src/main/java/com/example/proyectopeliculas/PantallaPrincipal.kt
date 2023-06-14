@@ -43,7 +43,11 @@ class PantallaPrincipal : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_perfil -> {
+
                     val intent = Intent(this, Perfil::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("idUsuario", idUsuario)
+
                     startActivity(intent)
                     true
 
@@ -51,6 +55,8 @@ class PantallaPrincipal : AppCompatActivity() {
                 R.id.action_noticias -> {
 
                     val intent = Intent(this, Noticias::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("idUsuario", idUsuario)
                     startActivity(intent)
 
                     true

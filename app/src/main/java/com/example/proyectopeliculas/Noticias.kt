@@ -11,6 +11,8 @@ class Noticias : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_noticias)
+        val usuario = intent.getStringExtra("usuario")
+        val idUsuario = intent.getStringExtra("idUsuario").toString()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = NoticiaAdapter()
@@ -27,24 +29,22 @@ class Noticias : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.action_perfil -> {
                     val intent = Intent(this, Perfil::class.java)
-
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("idUsuario", idUsuario)
                     startActivity(intent)
-
-
                     true
-
                 }
                 R.id.action_inicio -> {
-
                     val intent = Intent(this, PantallaPrincipal::class.java)
+                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("idUsuario", idUsuario)
                     startActivity(intent)
-
                     true
                 }
-
-                else -> {false}
+                else -> false
             }
         }
+
 
 
     }

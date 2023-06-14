@@ -33,6 +33,7 @@
             android:id="@+id/nombreTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alef_bold"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -40,6 +41,7 @@
             android:id="@+id/anoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alef"
             android:textSize="14sp" />
 
         <TextView
